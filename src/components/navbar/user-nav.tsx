@@ -1,4 +1,10 @@
-import { MenuIcon } from 'lucide-react'
+import {
+	LoginLink,
+	LogoutLink,
+	RegisterLink,
+} from '@kinde-oss/kinde-auth-nextjs/components'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { KeyRoundIcon, LogInIcon, MenuIcon } from 'lucide-react'
 import Image from 'next/image'
 import {
 	DropdownMenu,
@@ -7,7 +13,10 @@ import {
 	DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
 
-const UserNav = () => {
+const UserNav = async () => {
+	const { getUser } = getKindeServerSession()
+	const user = await getUser()
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -24,12 +33,32 @@ const UserNav = () => {
 				</div>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align='end'>
-				<DropdownMenuItem className='font-medium text-base'>
-					Register
-				</DropdownMenuItem>
-				<DropdownMenuItem className='font-medium text-base'>
-					Login
-				</DropdownMenuItem>
+				{user ? (
+					<DropdownMenuItem className='font-medium text-base'>
+						<LogoutLink>Register</LogoutLink>
+					</DropdownMenuItem>
+				) : (
+					<>
+						<DropdownMenuItem className='font-medium text-base'>
+							<RegisterLink
+								className='flex items-center justify-center
+							gap-x-3'
+							>
+								<KeyRoundIcon className='text-foreground' />
+								Register
+							</RegisterLink>
+						</DropdownMenuItem>
+						<DropdownMenuItem className='font-medium text-base'>
+							<LoginLink
+								className='flex items-center justify-center
+							gap-x-3'
+							>
+								<LogInIcon className='text-foreground' />
+								Login
+							</LoginLink>
+						</DropdownMenuItem>
+					</>
+				)}
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)
