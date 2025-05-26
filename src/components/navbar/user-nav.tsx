@@ -24,7 +24,7 @@ const UserNav = async () => {
 					<MenuIcon className='w-6 h-6 lg:w-5 lg:h-5 cursor-pointer' />
 
 					<Image
-						src={'/person.png'}
+						src={user?.picture || '/person.png'}
 						alt='person img'
 						className='rounded-full hidden lg:block h-8 w-8 cursor-pointer'
 						width={32}
@@ -35,7 +35,7 @@ const UserNav = async () => {
 			<DropdownMenuContent align='end'>
 				{user ? (
 					<DropdownMenuItem className='font-medium text-base'>
-						<LogoutLink>Register</LogoutLink>
+						<LogoutLink>Log out</LogoutLink>
 					</DropdownMenuItem>
 				) : (
 					<>
