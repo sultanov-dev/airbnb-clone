@@ -1,5 +1,5 @@
 import { categoryItems } from '@/lib/category.items'
-import CategoryItem from './category.item'
+import CategoryItem from './filter.item'
 
 const Filter = () => {
 	return (

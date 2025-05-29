@@ -36,7 +36,7 @@ const CategoryItem: FC<{ item: ICategoryItems }> = ({ item }) => {
 			<div className='relative w-6 h-6'>
 				<Image src={item.imageUrl} alt={item.name} width={24} height={24} />
 			</div>
-			<p className='text-base font-medium'>{item.title}</p>
+			<p className='text-base font-medium capitalize'>{item.title}</p>
 		</Link>
 	)
 }

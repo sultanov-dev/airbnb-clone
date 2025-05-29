@@ -1,6 +1,5 @@
 import {
 	LoginLink,
-	LogoutLink,
 	RegisterLink,
 } from '@kinde-oss/kinde-auth-nextjs/components'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
@@ -12,6 +11,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
+import MenuLinks from './menu.links'
 
 const UserNav = async () => {
 	const { getUser } = getKindeServerSession()
@@ -32,11 +32,9 @@ const UserNav = async () => {
 					/>
 				</div>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align='end'>
+			<DropdownMenuContent align='end' className='w-56'>
 				{user ? (
-					<DropdownMenuItem className='font-medium text-base'>
-						<LogoutLink>Log out</LogoutLink>
-					</DropdownMenuItem>
+					<MenuLinks />
 				) : (
 					<>
 						<DropdownMenuItem className='font-medium text-base'>
