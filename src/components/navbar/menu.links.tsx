@@ -1,10 +1,27 @@
+import { createHome } from '@/actions'
 import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components'
 import Link from 'next/link'
 import { DropdownMenuItem, DropdownMenuSeparator } from '../ui/dropdown-menu'
 
-const MenuLinks = () => {
+const MenuLinks = ({ userId }: { userId: string }) => {
+	const createAirbnbHome = createHome.bind(null, {
+		userId,
+	})
+
 	return (
 		<>
+			<DropdownMenuItem className='font-medium text-base w-full'>
+				<form action={createAirbnbHome}>
+					<button className='w-full text-start' type='submit'>
+						Airbnb your home
+					</button>
+				</form>
+			</DropdownMenuItem>
+			<DropdownMenuItem className='font-medium text-base w-full'>
+				<Link href={'/homes'} className='w-full'>
+					Listings
+				</Link>
+			</DropdownMenuItem>
 			<DropdownMenuItem className='font-medium text-base w-full'>
 				<Link href={'/favorites'} className='w-full'>
 					Favorites
@@ -13,11 +30,6 @@ const MenuLinks = () => {
 			<DropdownMenuItem className='font-medium text-base w-full'>
 				<Link href={'/reservations'} className='w-full'>
 					Reservation
-				</Link>
-			</DropdownMenuItem>
-			<DropdownMenuItem className='font-medium text-base w-full'>
-				<Link href={'/homes'} className='w-full'>
-					Listings
 				</Link>
 			</DropdownMenuItem>
 			<DropdownMenuSeparator />

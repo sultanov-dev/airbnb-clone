@@ -11,13 +11,13 @@ const SelectCategory = () => {
 
 	return (
 		<div className='grid grid-cols-4 gap-8 mt-10 w-3/5 mx-auto'>
+			<input type='hidden' name='categoryName' value={selected as string} />
 			{categoryItems.map(item => (
-				<div
-					key={item.id}
-					className='cursor-pointer'
-					onClick={() => setSelected(item.name)}
-				>
-					<Card className={cn(selected === item.name ? 'border-rose-500' : '')}>
+				<div key={item.id} className='cursor-pointer'>
+					<Card
+						className={cn(selected === item.name ? 'border-rose-500' : '')}
+						onClick={() => setSelected(item.name)}
+					>
 						<CardHeader>
 							<Image
 								src={item.imageUrl}

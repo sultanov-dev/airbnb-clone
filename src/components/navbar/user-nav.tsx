@@ -32,9 +32,9 @@ const UserNav = async () => {
 					/>
 				</div>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align='end' className='w-56'>
+			<DropdownMenuContent align='end'>
 				{user ? (
-					<MenuLinks />
+					<MenuLinks userId={user.id as string} />
 				) : (
 					<>
 						<DropdownMenuItem className='font-medium text-base'>

@@ -23,14 +23,19 @@ model User {
 model Home {
   id String @id @default(uuid())
 
-  title       String?
-  description String?
-  guests      String?
-  bedrooms    String?
-  bathrooms   String?
-  country     String?
-  photo       String?
-  price       Int?
+  title        String?
+  description  String?
+  categoryName String?
+  guests       String?
+  bedrooms     String?
+  bathrooms    String?
+  country      String?
+  photo        String?
+  price        Int?
+
+  isAddCategory    Boolean @default(false)
+  isAddLocation    Boolean @default(false)
+  isAddDescription Boolean @default(false)
 
   createdAt DateTime @default(now())
   userId    String?
